@@ -15,11 +15,15 @@ export class CarService {
 
   //Tüm Ürünleri Getirir
   getCars(): Observable<ListResponseModel<Car>> {
-    let newPath = this.apiUrl+"cars/getall"
+    let newPath = this.apiUrl + "cars/getall"
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
-  getCarsByBrand(brandId:number):Observable<ListResponseModel<Car>> {
-    let newPath = this.apiUrl + "cars/getbybrand?brandId="+brandId
+  getCarsByBrand(brandId: number): Observable<ListResponseModel<Car>> {
+    let newPath = this.apiUrl + "cars/getbybrand?brandid=" + brandId
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
+  getCarsByColor(colorId: number): Observable<ListResponseModel<Car>> {
+    let newPath = this.apiUrl + "cars/getbycolor?colorid=" + colorId
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
 
