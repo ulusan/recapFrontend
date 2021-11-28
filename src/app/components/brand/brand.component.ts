@@ -33,7 +33,7 @@ export class BrandComponent implements OnInit {
     }
   }
 
-  getAllBrandClass(){
+  getAllCars(){
     if(!this.currentBrand){
       return "list-group-item active"
     }

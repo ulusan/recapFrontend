@@ -6,6 +6,7 @@
     <tr>
       <th>CarId</th>
       <th>Brand Name</th>
+      <th>Car Name</th>
       <th>Color Name</th>
       <th>Model</th>
       <th>Günlük Fiyat</th>
@@ -16,10 +17,16 @@
   <tr *ngFor="let car of cars">
     <td>{{ car.carId }}</td>
     <td>{{ car.brandName }}</td>
+    <td>{{ car.carName }}</td>
     <td>{{ car.colorName }}</td>
     <td>{{ car.modelYear }}</td>
     <td>{{ car.dailyPrice }}</td>
     <td>{{ car.description }}</td>
-    <td><img style="max-height: 300px;" [src]="'https://localhost:44344/' + car.mainImage.imagePath"></td>
+    <td>
+      <img
+        style="max-height: 175px"
+        [src]="'https://localhost:44344/' + car.mainImage.imagePath"
+      />
+    </td>
   </tr>
 </table>
