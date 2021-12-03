@@ -6,7 +6,7 @@ export interface CarDetailDto{
     brandName:string
     colorName:string
     description:string
-    dailyPrice:string
+    dailyPrice:number
     modelYear:number
     imagePath:string
     mainImage:CarImage
