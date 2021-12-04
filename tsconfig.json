@@ -8,6 +8,8 @@
     "strict": true,
     //eklendi
     "strictPropertyInitialization": false,
+    //eklendi
+    "strictNullChecks": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,

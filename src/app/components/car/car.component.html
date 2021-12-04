@@ -12,7 +12,9 @@
     placeholder="enter the search statement.."
   />
 </div>
-<div *ngIf="filterText.length>2" class="alert alert-dark" role="alert">{{ filterText }} aradınız.</div>
+<div *ngIf="filterText.length > 2" class="alert alert-dark" role="alert">
+  {{ filterText }} aradınız.
+</div>
 
 <table *ngIf="dataLoaded == true" class="table">
   <thead>
@@ -26,22 +28,30 @@
       <th>Kdv'li Günlük Fiyat</th>
       <th>Açıklama</th>
       <th>Resim</th>
+      <th></th>
     </tr>
   </thead>
-  <tr *ngFor="let car of cars | filterPipe:filterText">
-    <td>{{ car.carId }}</td>
-    <td>{{ car.brandName | titlecase }}</td>
-    <td>{{ car.carName }}</td>
-    <td>{{ car.colorName }}</td>
-    <td>{{ car.modelYear }}</td>
-    <td>{{ car.dailyPrice | currency }}</td>
-    <td>{{ car.dailyPrice | vatAdded: 18 | currency }}</td>
-    <td>{{ car.description }}</td>
-    <td>
-      <img
-        style="max-height: 175px"
-        [src]="'https://localhost:44344/' + car.mainImage.imagePath"
-      />
-    </td>
-  </tr>
+  <tbody>
+    <tr *ngFor="let car of cars | filterPipe: filterText">
+      <td>{{ car.carId }}</td>
+      <td>{{ car.brandName | titlecase }}</td>
+      <td>{{ car.carName }}</td>
+      <td>{{ car.colorName }}</td>
+      <td>{{ car.modelYear }}</td>
+      <td>{{ car.dailyPrice | currency }}</td>
+      <td>{{ car.dailyPrice | vatAdded: 18 | currency }}</td>
+      <td>{{ car.description }}</td>
+      <td>
+        <img
+          style="max-height: 175px"
+          [src]="'https://localhost:44344/' + car.mainImage.imagePath"
+        />
+      </td>
+      <td>
+        <button (click)="addToCart(car)" type="button" class="btn btn-warning">
+          Sepete Ekle
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { CarService } from 'src/app/services/car.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-car',
@@ -12,10 +14,12 @@ import { CarService } from 'src/app/services/car.service';
 export class CarComponent implements OnInit {
   cars: CarDetailDto[] = [];
   dataLoaded = false;
-  filterText="";
+  filterText = "";
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
+    private toastrService: ToastrService,
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
@@ -54,5 +58,15 @@ export class CarComponent implements OnInit {
     })
 
 
+  }
+
+  addToCart(car: Car) {
+    if (car.carId === 4005) {
+      this.toastrService.error("Hata " + car.brandName + " adlı araba sepete eklenemez");
+
+    } else {
+      this.toastrService.success("Sepete Eklendi", car.brandName)
+    }
+    this.cartService.addToCart(car);
   }
 }
